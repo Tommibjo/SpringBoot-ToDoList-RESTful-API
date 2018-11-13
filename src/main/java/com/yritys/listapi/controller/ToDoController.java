@@ -45,4 +45,9 @@ public class ToDoController {
          return this.toDoService.getTask(id);
     }
     
+    // /todo/id -> muuta "done" boolean "true:ksi".
+    @RequestMapping(value="/{id}", method=RequestMethod.PATCH)
+    public void setDone(@PathVariable Long id){
+        this.toDoService.setDone(id);
+    }
 }

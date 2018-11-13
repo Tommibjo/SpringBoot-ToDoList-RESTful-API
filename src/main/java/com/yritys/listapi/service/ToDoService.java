@@ -34,4 +34,9 @@ public class ToDoService {
         return this.toDoRepository.findById(id);
     }
     
+    public void setDone(Long id){
+        ToDo todo = this.toDoRepository.findById(id).get();
+        todo.setDone(true);
+        this.toDoRepository.save(todo);
+    }
 }
