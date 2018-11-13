@@ -5,8 +5,10 @@
  */
 package com.yritys.listapi.service;
 
+import com.yritys.listapi.jpa.ToDo;
 import com.yritys.listapi.jpa.ToDoRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,14 @@ public class ToDoService {
     
     public List getAllTasks(){
         return this.toDoRepository.findAll();
+    }
+    
+    public void addTask(ToDo todo){
+        this.toDoRepository.saveAndFlush(todo);
+    }
+    
+    public Optional<ToDo> getTask(Long id){
+        return this.toDoRepository.findById(id);
     }
     
 }

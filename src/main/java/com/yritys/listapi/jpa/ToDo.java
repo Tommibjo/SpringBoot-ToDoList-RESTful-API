@@ -16,6 +16,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class ToDo extends AbstractPersistable<Long> {
     @Id
+    @javax.persistence.Id
     private Long id;
     private String task;
     private String info;

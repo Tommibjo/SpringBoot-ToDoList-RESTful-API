@@ -5,11 +5,14 @@
  */
 package com.yritys.listapi.controller;
 
+import com.yritys.listapi.jpa.ToDo;
 import com.yritys.listapi.service.ToDoService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,21 +22,27 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Tommi
  */
 @RestController
+@RequestMapping("todo")
 public class ToDoController {
     
     @Autowired
     private ToDoService toDoService;
    
     // /todo -> palauttaa koko listan.
-    @RequestMapping(value="/todo", method=RequestMethod.GET)
+    @RequestMapping(method=RequestMethod.GET)
     public List todo(){
         return this.toDoService.getAllTasks();
     }
     
+    @RequestMapping(method=RequestMethod.POST)
+    public void addToDo(@RequestBody ToDo todo){
+       this.toDoService.addTask(todo);
+    }
+    
     // /todo/id -> palauttaa valitun ID:n tehtävän tiedot.
-    @RequestMapping(value="/todo/{id}", method=RequestMethod.GET)
-    public String todoId(Model model, @PathVariable Integer id){
-         return null;
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public Optional<ToDo> todoId(Model model, @PathVariable Long id){
+         return this.toDoService.getTask(id);
     }
     
 }
