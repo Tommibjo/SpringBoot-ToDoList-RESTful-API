@@ -30,13 +30,17 @@ public class ToDoService {
         this.toDoDao.save(todo);
     }
     
+    public void deleteTask(Long id){
+        this.toDoDao.delete(this.toDoDao.get(id).get());
+    }
+    
     public Optional<ToDo> getTask(Long id){
         return this.toDoDao.get(id);
     }
     
     public void setDone(Long id){
-     /*   ToDo todo = this.toDoRepository.findById(id).get();
+        ToDo todo = this.toDoDao.get(id).get();
         todo.setDone(true);
-        this.toDoRepository.save(todo);*/
+        this.toDoDao.save(todo);
     }
 }

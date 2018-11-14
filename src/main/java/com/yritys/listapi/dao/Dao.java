@@ -21,7 +21,7 @@ public interface Dao<T> {
 
     List<T> getAll(); //(R)ead
 
-    void update(T t, String[] params); // (U)pdate  
+    void update(T t); // (U)pdate  
 
     void delete(T t); // (D)elete
 

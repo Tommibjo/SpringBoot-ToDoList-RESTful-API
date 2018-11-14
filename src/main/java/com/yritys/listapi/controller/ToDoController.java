@@ -50,4 +50,9 @@ public class ToDoController {
     public void setDone(@PathVariable Long id){
         this.toDoService.setDone(id);
     }
+    
+    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+    public void deleteToDo(@PathVariable Long id){
+        this.toDoService.deleteTask(id);
+    }
 }

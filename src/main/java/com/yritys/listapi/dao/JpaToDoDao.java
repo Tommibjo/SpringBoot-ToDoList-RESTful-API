@@ -40,13 +40,12 @@ public class JpaToDoDao implements Dao<ToDo> {
     }
 
     @Override
-    public void update(ToDo t, String[] params) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(ToDo t) {
+        this.toDoRepository.save(t);
     }
 
     @Override
     public void delete(ToDo t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.toDoRepository.delete(t);
     }
-    
 }
