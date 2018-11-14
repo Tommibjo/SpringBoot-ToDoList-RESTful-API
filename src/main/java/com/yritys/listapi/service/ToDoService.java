@@ -5,8 +5,8 @@
  */
 package com.yritys.listapi.service;
 
+import com.yritys.listapi.dao.JpaToDoDao;
 import com.yritys.listapi.jpa.ToDo;
-import com.yritys.listapi.jpa.ToDoRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +20,23 @@ import org.springframework.stereotype.Service;
 public class ToDoService {
     
     @Autowired
-    private ToDoRepository toDoRepository;
+    private JpaToDoDao toDoDao;
     
     public List getAllTasks(){
-        return this.toDoRepository.findAll();
+        return this.toDoDao.getAll();
     }
     
     public void addTask(ToDo todo){
-        this.toDoRepository.saveAndFlush(todo);
+        this.toDoDao.save(todo);
     }
     
     public Optional<ToDo> getTask(Long id){
-        return this.toDoRepository.findById(id);
+        return this.toDoDao.get(id);
     }
     
     public void setDone(Long id){
-        ToDo todo = this.toDoRepository.findById(id).get();
+     /*   ToDo todo = this.toDoRepository.findById(id).get();
         todo.setDone(true);
-        this.toDoRepository.save(todo);
+        this.toDoRepository.save(todo);*/
     }
 }
