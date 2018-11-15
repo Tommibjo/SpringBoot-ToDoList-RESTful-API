@@ -22,10 +22,10 @@ public class ToDo extends AbstractPersistable<Long> {
     private String info;
     private boolean done;
 
-    public ToDo(String task, String info, boolean done) {
+    public ToDo(String task, String info) {
         this.task = task;
         this.info = info;
-        this.done = done;
+        this.done = false;
     }
     
     public ToDo() {
