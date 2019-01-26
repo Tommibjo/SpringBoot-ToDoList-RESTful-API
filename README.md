@@ -1,3 +1,4 @@
 # QuarterCaster (Java <i>Spring Boot</i> RESTful api)
 
-Controlleri odottaa HTTP kutsua ja jos sellainen tulee, lähtee viesti kulkemaan layereitä pitkin embedded databaseen :) Olikohan kyseessä SQLite (?). 
+Spring boot RESTful service. Pystyy vastaanottamaan ja lähettämään JSON dataa (HTTP Metodien avulla).
+Käyttää embedded databasea :) Olikohan kyseessä SQLite (?). 
